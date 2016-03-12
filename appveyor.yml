@@ -2,6 +2,9 @@ version: 1.0.{build}
 build:
   verbosity: minimal
 
+environment:
+  QTDIR: 'C:\Qt\5.5\msvc2013_64'
+
 install:
   - git submodule update --init --recursive
   - curl.exe http://www.codesynthesis.com/download/xsd/4.0/windows/i686/xsd-4.0.msi -o xsd-4.0.msi
