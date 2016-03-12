@@ -2,6 +2,13 @@ version: 1.0.{build}
 build:
   verbosity: minimal
 
+
+configuration: Release
+
+build:
+  project: bmc.sln
+
+
 environment:
   QTDIR: 'C:\Qt\5.5\msvc2013_64'
 
