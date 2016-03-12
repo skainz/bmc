@@ -12,4 +12,4 @@ before_build:
   - b2.exe --with-program_options
   - echo Running cmake...
   - cd c:\projects\bmc
-  - cmake -G "Visual Studio 14 2015 Win64" -Dbmc_USE_PYTHON=OFF -DBOOST_ROOT=C:\Libraries\boost_1_59_0 .
+  - cmake -G "Visual Studio 14 2015 Win64" -Dbmc_USE_PYTHON=OFF -DBOOST_ROOT=C:\Libraries\boost_1_59_0 -DBOOST_LIBRARYDIR=C:\Libraries\boost_1_59_0\stage\lib .
