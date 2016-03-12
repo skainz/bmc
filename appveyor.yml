@@ -4,7 +4,7 @@ build:
 
 install:
   git submodule update --init --recursive
-  - ps: (new-object net.webclient).DownloadFile('http://www.codesynthesis.com/download/xsd/4.0/windows/i686/xsd-4.0.msi', 'xsd-4.0.msi')
+  - ps: Invoke-WebRequest http://www.codesynthesis.com/download/xsd/4.0/windows/i686/xsd-4.0.msi xsd-4.0.msi
   - ps: msiexec /i xsd-4.0.msi /quiet /qn /norestart /log install.log
 
 
