@@ -3,7 +3,6 @@ build:
   verbosity: minimal
   project: bmc.sln
 
-platform: x86
 
 configuration: Release
 
