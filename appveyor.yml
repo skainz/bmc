@@ -1,0 +1,11 @@
+version: 1.0.{build}
+build:
+  verbosity: minimal
+
+install:
+  git submodule update --init --recursive
+
+before_build:
+  - echo Running cmake...
+  - cd c:\projects\bmc
+  - cmake -G "Visual Studio 14 2015 Win64" -Dbmc_USE_PYTHON=OFF -DBOOST_ROOT=C:\Libraries\boost_1_59_0 .
