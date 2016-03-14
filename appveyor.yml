@@ -11,8 +11,8 @@ configuration: Release
 
 
 environment:
-  QTDIR: 'C:\Qt\5.5\msvc2013_64'
-  PATH: 'C:\Program Files (x86)\CodeSynthesis XSD 4.0\bin64;%PATH%'
+  QTDIR: 'C:\Qt\5.5\msvc2013'
+  PATH: 'C:\Program Files (x86)\CodeSynthesis XSD 4.0\bin;%PATH%'
 
 install:
   - git submodule update --init --recursive
@@ -28,7 +28,7 @@ before_build:
   - dir c:\libraries\boost_1_59_0\stage\lib
   - echo Running cmake...
   - cd c:\projects\bmc
-  - cmake -G "Visual Studio 14 2015" -Dbmc_USE_PYTHON=OFF -DBoost_DEBUG=1 -DBOOST_ROOT=C:\Libraries\boost_1_59_0 -DBOOST_INCLUDEDIR=C:\Libraries\boost_1_59_0 -DBOOST_LIBRARYDIR=C:\Libraries\boost_1_59_0\stage\lib -DBoost_PROGRAM_OPTIONS_LIBRARY_DEBUG=C:\Libraries\boost_1_59_0\stage\lib\libboost_program_options-vc140-mt-gd-1_59.lib -DBoost_PROGRAM_OPTIONS_LIBRARY_RELEASE=C:\Libraries\boost_1_59_0\stage\lib\libboost_program_options-vc140-mt-1_59.lib -DXercesC_INCLUDE_DIR="C:\Program Files (x86)\CodeSynthesis XSD 4.0\include" -DXercesC_LIBRARY_DEBUG="C:\Program Files (x86)\CodeSynthesis XSD 4.0\lib64\vc-12.0\xerces-c_3D.lib" -DXercesC_LIBRARY_RELEASE="C:\Program Files (x86)\CodeSynthesis XSD 4.0\lib64\vc-12.0\xerces-c_3.lib" -DXSDCXX_EXECUTABLE="C:\Program Files (x86)\CodeSynthesis XSD 4.0\bin\xsd.exe" -DXSDCXX_INCLUDE_DIR="C:\Program Files (x86)\CodeSynthesis XSD 4.0\include" -DQt5_DIR=C:\Qt\5.5\msvc2013_64\lib\cmake\Qt5 .
+  - cmake -G "Visual Studio 14 2015" -Dbmc_USE_PYTHON=OFF -DBoost_DEBUG=1 -DBOOST_ROOT=C:\Libraries\boost_1_59_0 -DBOOST_INCLUDEDIR=C:\Libraries\boost_1_59_0 -DBOOST_LIBRARYDIR=C:\Libraries\boost_1_59_0\stage\lib -DBoost_PROGRAM_OPTIONS_LIBRARY_DEBUG=C:\Libraries\boost_1_59_0\stage\lib\libboost_program_options-vc140-mt-gd-1_59.lib -DBoost_PROGRAM_OPTIONS_LIBRARY_RELEASE=C:\Libraries\boost_1_59_0\stage\lib\libboost_program_options-vc140-mt-1_59.lib -DXercesC_INCLUDE_DIR="C:\Program Files (x86)\CodeSynthesis XSD 4.0\include" -DXercesC_LIBRARY_DEBUG="C:\Program Files (x86)\CodeSynthesis XSD 4.0\lib\vc-12.0\xerces-c_3D.lib" -DXercesC_LIBRARY_RELEASE="C:\Program Files (x86)\CodeSynthesis XSD 4.0\lib\vc-12.0\xerces-c_3.lib" -DXSDCXX_EXECUTABLE="C:\Program Files (x86)\CodeSynthesis XSD 4.0\bin\xsd.exe" -DXSDCXX_INCLUDE_DIR="C:\Program Files (x86)\CodeSynthesis XSD 4.0\include" -DQt5_DIR=C:\Qt\5.5\msvc2013\lib\cmake\Qt5 .
   - type CMakeCache.txt
 
 build_script:
