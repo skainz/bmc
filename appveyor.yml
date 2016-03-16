@@ -16,7 +16,7 @@ environment:
   #PATH: 'C:\Program Files (x86)\CodeSynthesis XSD 4.0\bin;%PATH%'
 
 install:
-  - git submodule update --init --recursive
+  - git submodule --quiet update --init --recursive
   - curl.exe http://www.codesynthesis.com/download/xsd/4.0/windows/i686/xsd-4.0.msi -o xsd-4.0.msi
   - msiexec.exe /i xsd-4.0.msi /quiet /qn /norestart /log install.log
   - type install.log
