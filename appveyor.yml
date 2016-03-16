@@ -37,5 +37,5 @@ before_build:
 build_script:
   - msbuild bmc.sln /t:bmc_test /p:Configuration=Release
   - cd c:\projects\bmc\test\Release
-  - bmc_text.exe
+  - bmc_test.exe
 
