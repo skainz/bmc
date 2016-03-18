@@ -8,7 +8,7 @@ SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /DXERCES_STATIC_LIBRARY"
 
 
 if(MSVC)
-  option(BUILD_STATIC "Build static binary" OFF)
+  option(BUILD_STATIC "Build static binary" ON)
   if(BUILD_STATIC)
     message("Building static binary")
     foreach(flag_var CMAKE_CXX_FLAGS CMAKE_CXX_FLAGS_DEBUG CMAKE_CXX_FLAGS_RELEASE)
