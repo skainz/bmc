@@ -31,3 +31,6 @@ build_script:
   - cd c:\projects\bmc\test
   - Release\bmc_test.exe
 
+
+artifacts:
+  - path: Release/bmc.exe
