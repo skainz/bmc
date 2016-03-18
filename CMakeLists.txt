@@ -4,7 +4,7 @@ add_definitions(-DBMC_VERSION="${bmc_VERSION}")
 option(bmc_USE_DOXYGEN "Use Doxygen to generate C++ class documentation" OFF)
 
 if(MSVC)
-  option(BUILD_STATIC "Build static binary" ON)
+  option(BUILD_STATIC "Build static binary" OFF)
   if(BUILD_STATIC)
     message("Building static binary")
     foreach(flag_var CMAKE_CXX_FLAGS CMAKE_CXX_FLAGS_DEBUG CMAKE_CXX_FLAGS_RELEASE)
