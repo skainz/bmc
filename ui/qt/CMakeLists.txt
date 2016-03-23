@@ -6,7 +6,7 @@ find_package(Qt5 COMPONENTS Core Multimedia Svg Widgets Xml)
 if(Qt5_FOUND)
   qt5_add_resources(RESOURCES app.qrc)
   configure_file(config.h.in config.h)
-  add_executable(bmc-ui MACOSX_BUNDLE WIN32
+  add_executable(bmc-ui 
     app.cpp
     mainwindow.cpp mainwindow.h
     lilypondsvgwidget.cpp lilypondsvgwidget.h
@@ -17,7 +17,7 @@ if(Qt5_FOUND)
   target_compile_features(bmc-ui PRIVATE cxx_range_for)
   target_link_libraries(bmc-ui
     Qt5::Widgets Qt5::Multimedia Qt5::Svg Qt5::Xml
-    braillemusic-static
+    braillemusic-static ${QT5_STATIC_LIBS}
   )
   install(TARGETS bmc-ui
     BUNDLE DESTINATION . COMPONENT Runtime
