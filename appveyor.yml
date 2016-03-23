@@ -1,45 +1,47 @@
-init:
- - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-
 version: 1.0.{build}
 build:
   verbosity: minimal
   project: bmc.sln
 
-
 configuration: Release
 
-
 environment:
+<<<<<<< HEAD
   #QTDIR: 'C:\Qt\5.5\msvc2013'
   QTDIR: 'C:\projects\lilypondsvgwidget\qt-5.6.0-static'
   XSDDIR: 'C:\Program Files (x86)\CodeSynthesis XSD 4.0\bin'
   #PATH: 'C:\Program Files (x86)\CodeSynthesis XSD 4.0\bin;%PATH%'
+  BOOST_ROOT: 'c:\Libraries\boost_1_59_0'
+ 
 
 install:
   - git submodule --quiet update --init --recursive
-  - curl.exe http://www.codesynthesis.com/download/xsd/4.0/windows/i686/xsd-4.0.msi -o xsd-4.0.msi
+  - curl.exe -s -o xsd-4.0.msi http://www.codesynthesis.com/download/xsd/4.0/windows/i686/xsd-4.0.msi
   - msiexec.exe /i xsd-4.0.msi /quiet /qn /norestart /log install.log
+<<<<<<< HEAD
   - type install.log
   - curl.exe -s -o qt-5.6.0-static-msvc2015_x86.zip http://familiekainz.at/libs/qt-5.6.0-static-msvc2015_x86.zip
   - 7z x qt-5.6.0-static-msvc2015_x86.zip
 
+=======
+>>>>>>> 231acf25b1b636c6aba9c2bc3132da85cf5263a3
 
 before_build:
-  - set PATH=%QTDIR%\bin;%XSDDIR%;%PATH%
-  - set CMAKE_PREFIX_PATH=%QTDIR%;%CMAKE_PREFIX_PATH%
-  - echo "Building Boost program_optiosn module"
-  - cd c:\Libraries\boost_1_59_0
+  - cd %XSDDIR%\xerces-c-3.1.1\projects\Win32\VC10\xerces-all
+  - msbuild xerces-all.sln /t:XercesLib /p:PlatformToolset=v140 /P:Configuration="Static Release"
+  - cd %BOOST_ROOT%
   - bootstrap.bat --with-libraries=program_options
-  - b2.exe --with-program_options
-  - dir c:\libraries\boost_1_59_0\stage\lib
-  - echo Running cmake...
+  - b2.exe --build-type=complete --with-program_options stage
   - cd c:\projects\bmc
-  - cmake -G "Visual Studio 14 2015" -Dbmc_USE_PYTHON=OFF -DBoost_DEBUG=1 -DBOOST_ROOT=C:\Libraries\boost_1_59_0 -DBOOST_INCLUDEDIR=C:\Libraries\boost_1_59_0 -DBOOST_LIBRARYDIR=C:\Libraries\boost_1_59_0\stage\lib -DBoost_PROGRAM_OPTIONS_LIBRARY_DEBUG=C:\Libraries\boost_1_59_0\stage\lib\libboost_program_options-vc140-mt-gd-1_59.lib -DBoost_PROGRAM_OPTIONS_LIBRARY_RELEASE=C:\Libraries\boost_1_59_0\stage\lib\libboost_program_options-vc140-mt-1_59.lib -DXercesC_INCLUDE_DIR="C:\Program Files (x86)\CodeSynthesis XSD 4.0\include" -DXercesC_LIBRARY_DEBUG="C:\Program Files (x86)\CodeSynthesis XSD 4.0\lib\vc-12.0\xerces-c_3D.lib" -DXercesC_LIBRARY_RELEASE="C:\Program Files (x86)\CodeSynthesis XSD 4.0\lib\vc-12.0\xerces-c_3.lib" -DXSDCXX_EXECUTABLE="C:\Program Files (x86)\CodeSynthesis XSD 4.0\bin\xsd.exe" -DXSDCXX_INCLUDE_DIR="C:\Program Files (x86)\CodeSynthesis XSD 4.0\include" .
-  - type CMakeCache.txt
+  - set PATH=%QTDIR%\bin;%XSDDIR%\bin;%PATH%
+  - set CMAKE_PREFIX_PATH=%QTDIR%;%CMAKE_PREFIX_PATH%
+  - cmake -G "Visual Studio 14 2015" -Dbmc_USE_PYTHON=OFF -DXercesC_INCLUDE_DIR="%XSDDIR%\include" -DXercesC_LIBRARY_DEBUG="%XSDDIR%\lib\vc-12.0\xerces-c_3D.lib" -DXercesC_LIBRARY_RELEASE="%XSDDIR%\xerces-c-3.1.1\Build\Win32\VC10\Static Release\xerces-c_static_3.lib" .
 
 build_script:
-  - msbuild bmc.sln /t:bmc_test /p:Configuration=Release
+  - msbuild bmc.sln /t:bmc,bmc-ui,bmc_test /p:Configuration=Release
   - cd c:\projects\bmc\test
   - Release\bmc_test.exe
 
+
+artifacts:
+  - path: Release/bmc.exe
