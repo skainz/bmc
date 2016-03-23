@@ -17,13 +17,9 @@ install:
   - git submodule --quiet update --init --recursive
   - curl.exe -s -o xsd-4.0.msi http://www.codesynthesis.com/download/xsd/4.0/windows/i686/xsd-4.0.msi
   - msiexec.exe /i xsd-4.0.msi /quiet /qn /norestart /log install.log
-<<<<<<< HEAD
-  - type install.log
   - curl.exe -s -o qt-5.6.0-static-msvc2015_x86.zip http://familiekainz.at/libs/qt-5.6.0-static-msvc2015_x86.zip
   - 7z x qt-5.6.0-static-msvc2015_x86.zip
 
-=======
->>>>>>> 231acf25b1b636c6aba9c2bc3132da85cf5263a3
 
 before_build:
   - cd %XSDDIR%\xerces-c-3.1.1\projects\Win32\VC10\xerces-all
