@@ -41,3 +41,5 @@ build_script:
 
 artifacts:
   - path: Release/bmc.exe
+  - path: ui/qt/Release/bmc-ui.exe
+  
