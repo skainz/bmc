@@ -4,6 +4,10 @@
 #include <locale>
 #include <bmc/braille/text2braille.hpp>
 
+#include <QtPlugin>
+Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)
+
+
 int main(int argc, char *argv[])
 {
   std::locale::global(std::locale(""));
