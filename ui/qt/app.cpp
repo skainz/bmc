@@ -14,6 +14,8 @@ int main(int argc, char *argv[])
   bmc::braille::set_default_table_from_locale();
 
     QApplication app(argc, argv);
+	QApplication::setOrganizationName("3dots, Ltd.");
+	QApplication::setOrganizationDomain("blind.guru");
     QApplication::setApplicationName("Braille Music Compiler");
     QApplication::setApplicationVersion(BMC_VERSION);
     BrailleMusicEditor window;
