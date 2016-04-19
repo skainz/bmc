@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
-
+#include "windows.h"
 #include <locale>
 #include <bmc/braille/text2braille.hpp>
 
@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
   std::locale::global(std::locale(""));
   bmc::braille::set_default_table_from_locale();
 
+    FreeConsole();
     QApplication app(argc, argv);
 	QApplication::setOrganizationName("3dots, Ltd.");
 	QApplication::setOrganizationDomain("blind.guru");
