@@ -7,7 +7,7 @@ configuration: Release
 
 environment:
   #QTDIR: 'C:\Qt\5.5\msvc2013'
-  QTDIR: 'C:\projects\bmc\qt-5.6.0-static'
+  QTDIR: 'C:\projects\bmc\qt5_static_runtime
   XSDDIR: 'C:\Program Files (x86)\CodeSynthesis XSD 4.0'
   #PATH: 'C:\Program Files (x86)\CodeSynthesis XSD 4.0\bin;%PATH%'
   BOOST_ROOT: 'c:\Libraries\boost_1_59_0'
@@ -18,8 +18,8 @@ install:
   - curl.exe -s -o xsd-4.0.msi http://www.codesynthesis.com/download/xsd/4.0/windows/i686/xsd-4.0.msi
   - msiexec.exe /i xsd-4.0.msi /quiet /qn /norestart /log install.log
   - type install.log
-  - curl.exe -s -o qt-5.6.0-static-msvc2015_x86.zip http://familiekainz.at/libs/qt-5.6.0-static-msvc2015_x86.zip
-  - 7z x qt-5.6.0-static-msvc2015_x86.zip
+  - curl.exe -s -o qt-static.zip http://familiekainz.at/libs/qt5_static_runtime_4096e387f0592e3dfda5eb12b0d9c32b23d6b7db.zip
+  - 7z x qt-static.zip
 
 
 before_build:
@@ -31,7 +31,7 @@ before_build:
   - cd c:\projects\bmc
   - set PATH=%QTDIR%\bin;%XSDDIR%\bin;%PATH%
   - set CMAKE_PREFIX_PATH=%QTDIR%;%CMAKE_PREFIX_PATH%
-  - cmake -G "Visual Studio 14 2015" -Dbmc_USE_PYTHON=OFF -DXercesC_INCLUDE_DIR="%XSDDIR%\include" -DXercesC_LIBRARY_DEBUG="%XSDDIR%\lib\vc-12.0\xerces-c_3D.lib" -DXercesC_LIBRARY_RELEASE="%XSDDIR%\xerces-c-3.1.1\Build\Win32\VC10\Static Release\xerces-c_static_3.lib" -DQT5_STATIC_LIBS=C:\projects\bmc\qt-5.6.0-static\lib\qtharfbuzzng.lib;C:\projects\bmc\qt-5.6.0-static\lib\qtfreetype.lib;C:\projects\bmc\qt-5.6.0-static\lib\qtpcre.lib;C:\projects\bmc\qt-5.6.0-static\lib\Qt5PlatformSupport.lib;C:\projects\bmc\qt-5.6.0-static\plugins\platforms\qminimal.lib;C:\projects\bmc\qt-5.6.0-static\plugins\platforms\qoffscreen.lib;C:\projects\bmc\qt-5.6.0-static\plugins\platforms\qwindows.lib;imm32.lib;winmm.lib;Ws2_32.lib;iphlpapi.lib .
+  - cmake -G "Visual Studio 14 2015" -Dbmc_USE_PYTHON=OFF -DXercesC_INCLUDE_DIR="%XSDDIR%\include" -DXercesC_LIBRARY_DEBUG="%XSDDIR%\lib\vc-12.0\xerces-c_3D.lib" -DXercesC_LIBRARY_RELEASE="%XSDDIR%\xerces-c-3.1.1\Build\Win32\VC10\Static Release\xerces-c_static_3.lib"  .
 
 build_script:
   - msbuild bmc.sln /t:bmc,bmc-ui,bmc_test /p:Configuration=Release
