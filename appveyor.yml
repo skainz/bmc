@@ -15,7 +15,7 @@ environment:
 
 install:
   - git submodule --quiet update --init --recursive
-  - curl.exe -s -o xsd-4.0.msi http://www.codesynthesis.com/download/xsd/4.0/windows/i686/xsd-4.0.msi
+  - curl.exe -s -o xsd-4.0.msi https://www.codesynthesis.com/download/xsd/4.0/windows/i686/xsd-4.0.msi
   - msiexec.exe /i xsd-4.0.msi /quiet /qn /norestart /log install.log
   - type install.log
   - curl.exe -s -o qt-static.zip http://familiekainz.at/libs/qt5_static_runtime_4096e387f0592e3dfda5eb12b0d9c32b23d6b7db.zip
