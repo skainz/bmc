@@ -7,7 +7,8 @@ configuration: Release
 
 environment:
   #QTDIR: 'C:\Qt\5.5\msvc2013'
-  QTDIR: 'C:\projects\bmc\qt5_static_runtime
+  QTDIR: 'C:\projects\bmc\qt5_out_static_runtime'
+  #Qt5_DIR: 'C:\projects\bmc\qt5_out_static_runtime\lib\cmake\Qt5'
   XSDDIR: 'C:\Program Files (x86)\CodeSynthesis XSD 4.0'
   #PATH: 'C:\Program Files (x86)\CodeSynthesis XSD 4.0\bin;%PATH%'
   BOOST_ROOT: 'c:\Libraries\boost_1_59_0'
@@ -18,7 +19,7 @@ install:
   - curl.exe -s -o xsd-4.0.msi https://www.codesynthesis.com/download/xsd/4.0/windows/i686/xsd-4.0.msi
   - msiexec.exe /i xsd-4.0.msi /quiet /qn /norestart /log install.log
   - type install.log
-  - curl.exe -s -o qt-static.zip http://familiekainz.at/libs/qt5_static_runtime_4096e387f0592e3dfda5eb12b0d9c32b23d6b7db.zip
+  - curl.exe -s -o qt-static.zip https://familiekainz.at/libs/qt5_static_runtime_4096e387f0592e3dfda5eb12b0d9c32b23d6b7db.zip
   - 7z x qt-static.zip
 
 
