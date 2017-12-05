@@ -7,8 +7,8 @@ configuration: Release
 
 environment:
   #QTDIR: 'C:\Qt\5.5\msvc2013'
-  QTDIR: 'C:\projects\bmc\qt5_static_runtime'
-  Qt5_DIR: 'C:\projects\bmc\qt5_static_runtime\lib\cmake\Qt5'
+  QTDIR: 'C:\projects\bmc\qt5_out_static_runtime'
+  #Qt5_DIR: 'C:\projects\bmc\qt5_out_static_runtime\lib\cmake\Qt5'
   XSDDIR: 'C:\Program Files (x86)\CodeSynthesis XSD 4.0'
   #PATH: 'C:\Program Files (x86)\CodeSynthesis XSD 4.0\bin;%PATH%'
   BOOST_ROOT: 'c:\Libraries\boost_1_59_0'
