@@ -3,23 +3,14 @@ build:
   verbosity: minimal
   project: bmc.sln
 
-image:
-  - Visual Studio 2017
-
 configuration: Release
 
 environment:
-  #QTDIR: 'C:\Qt\5.5\msvc2013'
   QTDIR: 'C:\projects\bmc\qt5_out_static_runtime'
   #Qt5_DIR: 'C:\projects\bmc\qt5_out_static_runtime\lib\cmake\Qt5'
   XSDDIR: 'C:\Program Files (x86)\CodeSynthesis XSD 4.0'
   #PATH: 'C:\Program Files (x86)\CodeSynthesis XSD 4.0\bin;%PATH%'
   BOOST_ROOT: 'c:\Libraries\boost_1_64_0'
-#  matrix:
-#    - BOOST_ROOT: 'c:\Libraries\boost_1_59_0'
-#    - BOOST_ROOT: 'c:\Libraries\boost_1_60_0'
-#    - BOOST_ROOT: 'c:\Libraries\boost_1_62_0'
-#    - BOOST_ROOT: 'c:\Libraries\boost_1_63_0'
     
 
 install:
@@ -40,7 +31,7 @@ before_build:
   - cd c:\projects\bmc
   - set PATH=%QTDIR%\bin;%XSDDIR%\bin;%PATH%
   - set CMAKE_PREFIX_PATH=%QTDIR%;%CMAKE_PREFIX_PATH%
-  - cmake -G "Visual Studio 15 2017" -Dbmc_USE_PYTHON=OFF -DXercesC_INCLUDE_DIR="%XSDDIR%\include" -DXercesC_LIBRARY_DEBUG="%XSDDIR%\lib\vc-12.0\xerces-c_3D.lib" -DXercesC_LIBRARY_RELEASE="%XSDDIR%\xerces-c-3.1.1\Build\Win32\VC10\Static Release\xerces-c_static_3.lib"  .
+  - cmake -G "Visual Studio 14 2015" -Dbmc_USE_PYTHON=OFF -DXercesC_INCLUDE_DIR="%XSDDIR%\include" -DXercesC_LIBRARY_DEBUG="%XSDDIR%\lib\vc-12.0\xerces-c_3D.lib" -DXercesC_LIBRARY_RELEASE="%XSDDIR%\xerces-c-3.1.1\Build\Win32\VC10\Static Release\xerces-c_static_3.lib"  .
 
 build_script:
   - msbuild bmc.sln /t:bmc,bmc-ui,bmc_test /p:Configuration=Release
