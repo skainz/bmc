@@ -4,6 +4,8 @@
 // (see accompanying file LICENSE.txt or copy at
 //  http://www.gnu.org/licenses/gpl-3.0-standalone.html)
 
+
+
 #ifndef BMC_SCORE_DEF_HPP
 #define BMC_SCORE_DEF_HPP
 
@@ -141,9 +143,11 @@ score_grammar<Iterator>::score_grammar(error_handler<Iterator>& error_handler)
   BMC_LOCATABLE_SET_ID(solo_section);
   BMC_LOCATABLE_SET_ID(last_solo_section);
 
+  const wchar_t *g = L"error: expecting ";
+
   boost::spirit::qi::on_error<boost::spirit::qi::fail>(start,
     error_handler_function(error_handler)
-    (L"error: expecting ", _4, _3));
+    (g, _4, _3));
 }
 
 }}

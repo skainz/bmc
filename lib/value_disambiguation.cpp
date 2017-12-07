@@ -319,7 +319,7 @@ public:
   result_type operator()(ast::rest &rest)
   { emplace_back(rest, category); }
   result_type operator()(ast::chord &chord)
-  { emplace_back(chord, category, rational(1)); }
+  { emplace_back(chord,category, rational(1)); }
   result_type operator()(ast::moving_note &chord)
   { emplace_back(chord, category, rational(1)); }
   result_type operator()(ast::value_prefix const &) {}

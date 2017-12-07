@@ -130,7 +130,7 @@ public:
 
   value_proxy(ast::simile &simile, rational const& simile_duration)
   : type{ptr_type::simile}, simile_ptr{&simile}
-  , duration{simile_duration * simile.count}
+  , duration{simile_duration * (int)simile.count}
   { BOOST_ASSERT(simile_ptr->duration == zero); }
 
   void make_beam_begin()
@@ -171,10 +171,19 @@ inline rational
 duration(std::vector<value_proxy> const &values)
 {
   // This avoids rational{0} + x, which is always x.
-  return values.empty()
-         ? zero
-         : std::accumulate(std::next(std::begin(values)), std::end(values),
-                           static_cast<rational>(values.front()));
+	rational sum = 0;
+	for (auto value : values) {
+		sum += static_cast<rational>(value);
+
+	}
+	return sum;
+
+	//return std::accumulate(std::begin(values),std::end(values),zero);
+
+	  //values.empty()
+       //  ? zero
+       //  : std::accumulate(std::next(std::begin(values)), std::end(values),
+    //                       static_cast<rational>(values.front()));
 }
 
 struct global_state
